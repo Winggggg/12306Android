@@ -1,14 +1,24 @@
 package wing.com.a12306.http;
 
+import android.util.Log;
+
+import java.io.IOException;
 import java.net.HttpCookie;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.http.Method;
+import okhttp3.FormBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import wing.com.a12306.config.Constants;
 import wing.com.a12306.config.UrlConfig;
 import wing.com.a12306.config.UrlsEnum;
@@ -65,6 +75,7 @@ public class Session {
 
         private HttpRequest httpRequest;
 
+
         private HttpClient() {
         }
 
@@ -113,6 +124,45 @@ public class Session {
             } else {
                 return this.httpRequest.execute();
             }
+        }
+
+        public HttpResponse send2(UrlsEnum urlsEnum, HashMap<String, Object> formData, boolean async) {
+//            UrlConfig urlConfig = urlsEnum.getUrlConfig();
+//            boolean isPost=urlConfig.getMethod().equals("post")?true:false;
+//            FormBody.Builder formBuilder=new FormBody.Builder();
+//            RequestBody requestBody=formBuilder.build();
+//            if (formData!=null){
+//                Set<Map.Entry<String, Object>> entrySet = formData.entrySet();
+//                entrySet.forEach(stringObjectEntry -> formBuilder.add(stringObjectEntry.getKey(), (String) stringObjectEntry.getValue()));
+//            }
+//            Request.Builder builder = new Request.Builder()
+//                    .url(urlConfig.getUrl())
+//                    .addHeader("Host", Constants.HOST)
+//                    .addHeader("Origin", Constants.ORIGIN)
+//                    .addHeader("Connection", "keep-alive")
+//                    .addHeader("Accept", Constants.ACCEPT);
+//            if (isPost){
+//               builder.post(requestBody);
+//            }
+//            // 设置cookie
+//            if (StrUtil.isNotBlank(cookie)) {
+//                builder.header("Cookie", cookie);
+//            }
+//            Request request = builder.build();
+//            Response response = null;
+//            try {
+//                response = OkHttpUtil.getInstance().newCall(request).execute();
+//                if (response==null){
+//                    return new HttpResponse();
+//                }
+//                byte[] bytes = response.body().bytes();
+//                result=new String(bytes,"utf-8");
+//                Log.i(TAG,"result:"+result );
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+            return null;
         }
 
         private Method getMethod(String methodStr) {
